@@ -32,7 +32,6 @@ jobs:
     - name: Build and test with Maven
       run: mvn clean verify --fail-never
 
-name: Java CI
 
 on:
   push:
