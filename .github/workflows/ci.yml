@@ -25,13 +25,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/*.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    - name: Install dependencies
-      run: mvn install -DskipTests
-
-    - name: Run tests
-      run: mvn install
-
+    - name: Build and test with Maven
+      run: mvn clean verify --fail-never
